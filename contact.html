@@ -3,222 +3,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-Compatible" content="IE=edge">
     <title>Contact Us - Timeless Classics</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <style>
-        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
-
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            background: url('https://wallpaperaccess.com/full/40462.jpg') no-repeat center center/cover; /* Add your image path here */
+            background: url('https://wallpaperaccess.com/full/40462.jpg') no-repeat center center/cover;
+            background-attachment: fixed;
             color: #fff;
             overflow-x: hidden;
         }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* Header */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2rem;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+            animation: slideDown 0.8s ease-in-out;
         }
-
         header h1 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            text-transform: uppercase;
+            font-size: 1.8rem;
             color: #ff9800;
             letter-spacing: 1.5px;
         }
-
         nav {
             display: flex;
             gap: 1.5rem;
         }
-
+        
         nav a {
             font-size: 1rem;
             color: #fff;
+            text-transform: uppercase;
+            text-decoration: none;
             padding: 0.5rem 1rem;
             border-radius: 8px;
-            transition: background 0.3s ease, color 0.3s ease;
+            transition: all 0.3s ease;
         }
-
+        
         nav a:hover {
-            background: #ff9800;
             color: #000;
+            background: linear-gradient(to right, #ff9800, #e67e22);
+            box-shadow: 0px 4px 8px rgba(255, 152, 0, 0.5);
+        }
+        
+        
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            color: #ff9800;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+        
+            nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 10px;
+                background: rgba(0, 0, 0, 0.9);
+                width: 200px;
+                text-align: center;
+                padding: 10px;
+                border-radius: 5px;
+            }
+        
+            nav a {
+                display: block;
+                padding: 10px;
+                font-size: 1rem;
+            }
+        
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 15px;
+                top: 10px;
+            }
         }
 
-        /* Contact Section */
-        .contact-container {
-            max-width: 1200px;
-            margin: 4rem auto;
+       
+        .contact-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            flex-direction: column;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        .contact-box {
+            background: rgba(0, 0, 0, 0.85);
             padding: 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
             border-radius: 12px;
             box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .contact-info {
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: left;
-        }
-
-        .contact-info h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #ff9800;
-        }
-
-        .contact-info p {
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .social-links {
-            margin-top: 1rem;
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            color: #fff;
-            font-size: 1.5rem;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: background 0.3s ease;
-        }
-
-        .social-links a.facebook {
-            background: #3b5998;
-        }
-
-        .social-links a.twitter {
-            background: #1da1f2;
-        }
-
-        .social-links a.instagram {
-            background: #e4405f;
-        }
-
-        .social-links a:hover {
-            opacity: 0.8;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .contact-form input,
-        .contact-form textarea {
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-in-out forwards;
+            max-width: 400px;
             width: 100%;
-            padding: 1rem;
-            font-size: 1rem;
-            border: 1px solid #ddd;
+        }
+        .contact-box h2 {
+            font-size: 2rem;
+            color: #ff9800;
+            margin-bottom: 1rem;
+        }
+        .contact-box input,
+        .contact-box textarea {
+            width: 100%;
+            padding: 0.7rem;
+            margin: 0.5rem 0;
             border-radius: 8px;
-            background: #f8f9fa;
+            border: none;
+            font-size: 0.9rem;
             outline: none;
+            background: #222;
+            color: white;
         }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            border-color: #ff9800;
-            box-shadow: 0px 0px 4px rgba(255, 152, 0, 0.5);
+        .contact-box input:focus, .contact-box textarea:focus {
+            border: 2px solid #ff9800;
         }
-
-        .contact-form button {
-            padding: 1rem;
-            font-size: 1.2rem;
+        .contact-box button {
+            width: 100%;
+            padding: 0.8rem;
+            font-size: 1rem;
             color: #fff;
             background: #ff9800;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: 0.3s ease;
         }
-
-        .contact-form button:hover {
+        .contact-box button:hover {
             background: #e67e22;
         }
-
-        /* Responsive Design */
+        .social-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .social-links a {
+            font-size: 1.3rem;
+            color: #fff;
+            transition: 0.3s ease;
+        }
+        .social-links a:hover {
+            transform: scale(1.1);
+            color: #ff9800;
+        }
         @media (max-width: 768px) {
-            .contact-container {
-                grid-template-columns: 1fr;
-                padding: 1rem;
-            }
+    .contact-section {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end; /* Move content to the right */
+        padding: 1rem;
+    }
 
-            .contact-form {
-                padding: 1.5rem;
+    .contact-box {
+        padding: 1.5rem;
+        max-width: 350px;
+        align-self: flex-end; /* Align form to the right */
+    }
+
+    .contact-info {
+        max-width: 300px;
+        text-align: left; /* Align text to the left */
+        align-self: flex-start; /* Move text to the left */
+        padding: 1rem;
+    }
+
+    .contact-box h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-box input,
+    .contact-box textarea {
+        padding: 0.6rem;
+        font-size: 0.85rem;
+    }
+
+    .contact-box button {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-box {
+        max-width: 300px;
+        align-self: center;
+    }
+
+    .contact-info {
+        max-width: 280px;
+        align-self: center;
+        text-align: center;
+    }
+}
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        footer {
+            position: relative;
+            text-align: center;
+            padding: 1.5rem;
+            color: #fff;
+            font-size: 0.9rem;
+            box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        footer a {
+            color: #ff9800;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: #e67e22;
+        }
+        
+        /* Responsive Footer */
+        @media (max-width: 768px) {
+            footer {
+                font-size: 0.85rem;
+                padding: 1rem;
+                text-align: center;
+                line-height: 1.5;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            footer {
+                font-size: 0.8rem;
+                padding: 0.8rem;
+                text-align: center;
+                line-height: 1.5;
+            }
+        }
+        
     </style>
 </head>
 <body>
     <header>
         <h1>Timeless Classics</h1>
-        <nav>
+        <span class="menu-toggle" onclick="toggleMenu()">☰</span> <!-- Menu Icon -->
+        <nav id="mobile-menu">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="gallery.html">Gallery</a>
         </nav>
     </header>
-
-    <section class="contact-container">
-        <!-- Contact Information -->
-        <div class="contact-info">
+    <section class="contact-section">
+        <div class="contact-box">
             <h2>Contact Us</h2>
-            <p>We'd love to hear from you! Reach out to us for any inquiries, feedback, or collaboration opportunities.</p>
-            <p>Email: timeless@classics.com</p>
-            <p>Phone: +123 456 7890</p>
-            <div class="social-links">
-                <a href="#" class="facebook" aria-label="Facebook"><i>F</i></a>
-                <a href="#" class="twitter" aria-label="Twitter"><i>T</i></a>
-                <a href="#" class="instagram" aria-label="Instagram"><i>I</i></a>
-            </div>
-        </div>
-
-        <!-- Contact Form -->
-        <div class="contact-form">
             <form>
                 <input type="text" placeholder="Your Name" required>
                 <input type="email" placeholder="Your Email" required>
                 <textarea rows="5" placeholder="Your Message" required></textarea>
                 <button type="submit">Send Message</button>
             </form>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
         </div>
+        <footer>
+            &copy; 2025 Timeless Classics. All rights reserved. | Visit us at 
+            <a href="https://www.timelessclassics.com">www.timelessclassics.com</a>
+        </footer>
+        
     </section>
+    <script>
+        function toggleMenu() {
+            let nav = document.getElementById("mobile-menu");
+            if (nav.style.display === "block") {
+                nav.style.display = "none";
+            } else {
+                nav.style.display = "block";
+            }
+        }
+        </script>
 </body>
 </html>
